@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+anyhow = "1.0.100"
 http-body-util = "0.1.3"
 hyper = { version = "1.8.1", features = ["full"] }
 hyper-reverse-proxy = { git = "https://code.betamike.com/micropelago/hyper-reverse-proxy.git", branch = "master" }
