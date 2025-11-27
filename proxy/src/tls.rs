@@ -3,6 +3,7 @@ use std::{io::BufReader, path::Path, sync::Arc};
 use anyhow::{Context, Result, ensure};
 use tracing::info;
 
+/// Load TLS configuration from certificate and private key files.
 pub fn load_tls_config(cert_path: &Path, key_path: &Path) -> Result<Arc<rustls::ServerConfig>> {
     info!("Loading TLS certificate from {:?}", cert_path);
     info!("Loading TLS private key from {:?}", key_path);

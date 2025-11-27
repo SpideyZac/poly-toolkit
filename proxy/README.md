@@ -3,6 +3,17 @@
 Poly Proxy is a lightweight HTTP reverse proxy server designed to allow the usage of the PolyTrack leaderboard without
 being affected by CORS (Cross-Origin Resource Sharing) restrictions.
 
+## TODO
+
+- [x] Get basic proxy working
+- [x] Add TLS support
+- [x] Add logging
+- [x] Add configuration via environment variables
+- [ ] Write tests
+- [x] Write documentation (inline)
+- [ ] Write documentation (README)
+- [ ] Add Dockerfile and other deployment options
+
 ## Acceptable Use Policy
 
 By using Poly Proxy, you agree to the following terms:

@@ -2,15 +2,22 @@ use std::{net::SocketAddr, path::PathBuf};
 
 use anyhow::{Context, Result};
 
+/// Configuration for the application.
 pub struct Config {
+    /// The address to bind the server to.
     pub bind_addr: SocketAddr,
+    /// The backend URL to connect to.
     pub backend_url: String,
+    /// Path to the TLS certificate file.
     pub cert_path: PathBuf,
+    /// Path to the TLS key file.
     pub key_path: PathBuf,
+    /// Whether to use TLS.
     pub use_tls: bool,
 }
 
 impl Config {
+    /// Load configuration from environment variables.
     pub fn from_env() -> Result<Self> {
         let bind_addr = std::env::var("BIND_ADDR")
             .unwrap_or_else(|_| "127.0.0.1:8000".to_string())

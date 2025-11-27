@@ -14,9 +14,12 @@ use hyper_util::{
 use rustls::ClientConfig;
 use tracing::{debug, error};
 
+/// Type alias for the HTTPS connector and response body
 type Connector = HttpsConnector<HttpConnector>;
+/// Type alias for the response body
 pub type ResponseBody = UnsyncBoxBody<Bytes, Error>;
 
+/// Get a singleton reverse proxy client
 fn proxy_client() -> &'static ReverseProxy<Connector> {
     static PROXY_CLIENT: OnceLock<ReverseProxy<Connector>> = OnceLock::new();
     PROXY_CLIENT.get_or_init(|| {
@@ -42,6 +45,7 @@ fn proxy_client() -> &'static ReverseProxy<Connector> {
     })
 }
 
+/// Handle proxying the incoming request to the backend URL
 pub async fn handle(
     client_ip: IpAddr,
     backend_url: &str,

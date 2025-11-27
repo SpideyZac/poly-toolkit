@@ -13,6 +13,7 @@ use tracing::{debug, info, warn};
 
 use crate::{config::Config, proxy::handle};
 
+/// Handles an incoming TLS connection, negotiating between HTTP/1.1 and HTTP/2
 pub async fn handle_connection(
     io: TokioIo<TlsStream<TcpStream>>,
     client_ip: IpAddr,
@@ -53,6 +54,7 @@ pub async fn handle_connection(
     }
 }
 
+/// Handles an incoming plaintext TCP connection using HTTP/1.1
 pub async fn handle_plaintext_connection(
     io: TokioIo<TcpStream>,
     client_ip: IpAddr,
@@ -74,6 +76,7 @@ pub async fn handle_plaintext_connection(
     }
 }
 
+/// Waits for a shutdown signal (Ctrl+C or terminate)
 pub async fn shutdown_signal() {
     let ctrl_c = async {
         signal::ctrl_c()
